@@ -32,7 +32,8 @@ function getParameterByName(name) {
 console.log('me:'+ getParameterByName("me"));
 if (!getParameterByName("me"))
 {
-        $('#error_msg').text("Please login by putting your user name in the URL like ?me=Mia");
+    $('#error_msg').text("Please login by putting your user name in the URL like ?me=Mia");
+    return;
 }
         
 var deleteMessage = function(record) {
