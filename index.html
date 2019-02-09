@@ -65,7 +65,7 @@ $('#create').click(function(){
     base('Messages').create({
         "From": "me",
         "To": "you",
-        "Msh": "Al Held began his painting career by exhibiting Abstract Expressionist works in New York; he later turned to hard-edged geometric paintings that were ..."
+        "Msg": "Al Held began his painting career by exhibiting Abstract Expressionist works in New York; he later turned to hard-edged geometric paintings that were ..."
     }, function(err, record) {
         if (err) { console.log(err); return; }
         loadArtists();
