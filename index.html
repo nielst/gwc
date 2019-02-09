@@ -59,7 +59,7 @@ var loadArtists = function() {
                 deleteArtist(record);
             });
 
-            if (record.get('To') == getParameterByName("me"))
+            if (record.get('To') == getParameterByName("me") ]] record.get('From') == getParameterByName("me"))
             {
                 $artistInfo.append(x)
                 $artistInfo.attr('data-record-id', record.getId());
