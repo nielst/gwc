@@ -20,6 +20,22 @@ var Airtable = require('airtable');
 // Get a base ID for an instance of art gallery example
 var base = new Airtable({ apiKey: 'keyDUEhF6Gtx76Myx' }).base('appPgm3ltdbRypFvH');
 
+function GetQueryStringParams(sParam)
+{
+    var sPageURL = window.location.search.substring(1);
+    var sURLVariables = sPageURL.split('&amp;');
+    for (var i = 0; i &lt; sURLVariables.length; i++) 
+    {
+        var sParameterName = sURLVariables[i].split('=');
+        if (sParameterName[0] == sParam) 
+        {
+            return sParameterName[1];
+        }
+    }
+}
+
+        console.log(GetQueryStringParams("me"));
+
 var deleteArtist = function(record) {
     record.destroy(function(err) {
         if (err) {
