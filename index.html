@@ -6,6 +6,7 @@
         <script src="airtable.browser.js"></script>
     </head>
     <body>
+        <div id="error_msg"></div>
         <h1>Messages</h1>
         <div id="artists"></div>
 
@@ -27,8 +28,13 @@ function getParameterByName(name) {
     var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
     return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
 }
-console.log('me:'+ getParameterByName("me"));
 
+console.log('me:'+ getParameterByName("me"));
+if (!getParameterByName("me"))
+{
+        $('#error_msg').text("Please login by putting your user name in the URL like ?me=Mia");
+}
+        
 var deleteArtist = function(record) {
     record.destroy(function(err) {
         if (err) {
