@@ -8,7 +8,7 @@
     <body>
         <div id="error_msg"></div>
         <h1>Messages</h1>
-        <div id="artists"></div>
+        <div id="messages"></div>
 
         <hr/>
 
@@ -35,7 +35,7 @@ if (!getParameterByName("me"))
         $('#error_msg').text("Please login by putting your user name in the URL like ?me=Mia");
 }
         
-var deleteArtist = function(record) {
+var deleteMessage = function(record) {
     record.destroy(function(err) {
         if (err) {
             console.log('Error destroying ', recordId, err);
@@ -46,8 +46,8 @@ var deleteArtist = function(record) {
     });
 };
 
-var loadArtists = function() {
-    $('#artists').empty();
+var loadMessages = function() {
+    $('#messages').empty();
 
     base('Messages').select({
         sort: [
@@ -57,20 +57,20 @@ var loadArtists = function() {
         records.forEach(function(record) {
             console.log('Retrieved ', record.get('From'));
 
-            var $artistInfo = $('<div>');
-            $artistInfo.append($('<h3>').text(record.get('From')));
-            $artistInfo.append($('<div>').text(record.get('To')));
-            $artistInfo.append($('<div>').text(record.get('Msg')));
+            var $msgInfo = $('<div>');
+            $msgInfo.append($('<h3>').text(record.get('From')));
+            $msgInfo.append($('<div>').text(record.get('To')));
+            $msgInfo.append($('<div>').text(record.get('Msg')));
             var x = $('<button>').text('Delete').click(function() {
-                deleteArtist(record);
+                deleteMessage(record);
             });
 
             if (record.get('To') == getParameterByName("me") || record.get('From') == getParameterByName("me"))
             {
-                $artistInfo.append(x)
-                $artistInfo.attr('data-record-id', record.getId());
+                $msgInfo.append(x)
+                $msgInfo.attr('data-record-id', record.getId());
 
-                $('#artists').append($artistInfo);
+                $('#messages').append($msgInfo);
             }
         });
 
@@ -87,11 +87,11 @@ $('#create').click(function(){
         "Msg": $('#newmsg_msg').val()
     }, function(err, record) {
         if (err) { console.log(err); return; }
-        loadArtists();
+        loadMessages();
     });
 });
 
-loadArtists();
+loadMessages();
 
 </script>
 </html>
