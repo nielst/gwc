@@ -77,8 +77,8 @@ var loadArtists = function() {
 $('#create').click(function(){
     base('Messages').create({
         "From": getParameterByName("me"),
-        "To": $('#newmsg_to'),
-        "Msg": $('#newmsg_to')
+        "To": $('#newmsg_to').val,
+        "Msg": $('#newmsg_to').val
     }, function(err, record) {
         if (err) { console.log(err); return; }
         loadArtists();
