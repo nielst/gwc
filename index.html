@@ -10,6 +10,9 @@
         <div id="artists"></div>
 
         <hr/>
+
+        <div>To <input id="newmsg_to"></div>
+        <div>Msg <input id="newmsg_msg"></div>
         <button id='create'>Create</button>
         <div id="created"></div>
     </body>
@@ -73,9 +76,9 @@ var loadArtists = function() {
 
 $('#create').click(function(){
     base('Messages').create({
-        "From": "me",
-        "To": "you",
-        "Msg": "Al Held began his painting career by exhibiting Abstract Expressionist works in New York; he later turned to hard-edged geometric paintings that were ..."
+        "From": getParameterByName("me"),
+        "To": $('#newmsg_to'),
+        "Msg": $('#newmsg_to')
     }, function(err, record) {
         if (err) { console.log(err); return; }
         loadArtists();
