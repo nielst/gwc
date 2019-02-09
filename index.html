@@ -36,11 +36,11 @@ var loadArtists = function() {
 
     base('Messages').select({
         sort: [
-            {field: 'Name', direction: 'asc'}
+            {field: 'From', direction: 'asc'}
         ]
     }).eachPage(function page(records, fetchNextPage) {
         records.forEach(function(record) {
-            console.log('Retrieved ', record.get('Name'));
+            console.log('Retrieved ', record.get('From'));
 
             var $artistInfo = $('<div>');
             $artistInfo.append($('<h3>').text(record.get('From')));
