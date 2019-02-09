@@ -11,11 +11,13 @@
         <div id="messages"></div>
 
         <hr/>
-
-        <div>To <input id="newmsg_to"></div>
-        <div>Msg <input id="newmsg_msg"></div>
-        <button id='create'>Create</button>
-        <div id="created"></div>
+        
+        <div id="create_msg_section">
+            <div>To <input id="newmsg_to"></div>
+            <div>Msg <input id="newmsg_msg"></div>
+            <button id='create'>Create</button>
+            <div id="created"></div>
+        </div>
     </body>
 
 
@@ -27,13 +29,6 @@ var base = new Airtable({ apiKey: 'keyDUEhF6Gtx76Myx' }).base('appPgm3ltdbRypFvH
 function getParameterByName(name) {
     var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
     return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
-}
-
-console.log('me:'+ getParameterByName("me"));
-if (!getParameterByName("me"))
-{
-    $('#error_msg').text("Please login by putting your user name in the URL like ?me=Mia");
-    return;
 }
         
 var deleteMessage = function(record) {
@@ -92,7 +87,16 @@ $('#create').click(function(){
     });
 });
 
-loadMessages();
+if (!getParameterByName("me"))
+{
+    $('#error_msg').text("Please login by putting your user name in the URL like ?me=Mia");
+    $('#create_msg_section').hide();
+}
+else
+{
+    loadMessages();
+}
+        
 
 </script>
 </html>
