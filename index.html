@@ -56,8 +56,8 @@ var loadMessages = function() {
 
             var $msgInfo = $('<div>');
             $msgInfo.append($('<h3>').text('From: ' + record.get('From')));
-            $msgInfo.append($('<div>').text(record.get('Sent')));
-            $msgInfo.append($('<div>').text(record.get('To')));
+            $msgInfo.append($('<div>').text('Date: ' + record.get('Sent')));
+            $msgInfo.append($('<div>').text('To: ' + record.get('To')));
             $msgInfo.append($('<div>').text(record.get('Msg')));
             var x = $('<button>').text('Delete').click(function() {
                 deleteMessage(record);
